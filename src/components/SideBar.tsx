@@ -5,10 +5,10 @@ import { Button } from "./Button";
 
 interface SideBarProps {
   selectedGenreId: number;
-  onClick: (id: number) => void;
+  handleClick: (id: number) => void;
 }
 
-export function SideBar({ selectedGenreId, onClick }: SideBarProps) {
+export function SideBar({ selectedGenreId, handleClick }: SideBarProps) {
   const [genres, setGenres] = useState<GenreResponseProps[]>([]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export function SideBar({ selectedGenreId, onClick }: SideBarProps) {
             key={String(genre.id)}
             title={genre.title}
             iconName={genre.name}
-            onClick={() => onClick(genre.id)}
+            onClick={() => handleClick(genre.id)}
             selected={selectedGenreId === genre.id}
           />
         ))}
